@@ -7,6 +7,7 @@
   <span><%= list.body %></span>
 
 <%= link_to "Show", list_path(list) %>
+<%= link_to "Edit", edit_list_path(list) %>
 <%= link_to "Destroy", destroy_list_path(list), method: :delete, "data-confirm" => "Are you sure?" %>
 
 <% end %>
