@@ -6,12 +6,21 @@
   <h4>Body</h4>
   <span><%= list.body %></span>
 
-<%= link_to "Show", list_path(list.id) %>
-<%= link_to "Destroy", destroy_list_path(@list.id), method: :delete, "data-confirm" => "Are you sure?" %>
+<%= link_to "Show", list_path(list) %>
+<%= link_to "Destroy", destroy_list_path(list), method: :delete, "data-confirm" => "Are you sure?" %>
 
 <% end %>
 
 <h2>New book</h2>
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました。
+  <ur>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ur>
+<% end %>
+
 <%= form_with model: @list, url: '/lists', method: :post do |f| %>
   <p>Title</p>
   <%= f.text_field :title %>
