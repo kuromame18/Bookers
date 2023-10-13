@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  def new
+  def index
     @list = List.new
     @lists = List.all
   end
@@ -11,7 +11,7 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       @lists = List.all
-      render :new
+      render :index
     end
   end
 
@@ -21,12 +21,12 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
-    flash[:notice] = "Book was successfully updated"
   end
 
   def update
     list = List.find(params[:id])
     list.update(list_params)
+    flash[:notice] = "Book was successfully updated"
     redirect_to list_path(list.id)
   end
 
@@ -34,7 +34,7 @@ class ListsController < ApplicationController
     list = List.find(params[:id])
     list.destroy
     flash[:notice] = "Book was successfully destroyed"
-    redirect_to '/lists/new'
+    redirect_to '/lists/index'
   end
 
   private
