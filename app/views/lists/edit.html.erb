@@ -1,15 +1,18 @@
-<h1>Editing Book</h1>
-<%= form_with model: @list, url: update_list_path(@list.id), method: :patch do |f| %>
+<body>
+  <h1>Editing Book</h1>
+  <%= form_with model: @list, url: update_list_path(@list.id), method: :patch do |f| %>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+  <div>Title</div>
+    <%= f.text_field :title %>
 
-  <h4>Body</h4>
-  <%= f.text_area :body %>
+  <div>Body</div>
+    <%= f.text_area :body %>
 
-  <%= f.submit 'Update Book' %>
+  <p><%= f.submit 'Update Book' %></p>
 
   <%= link_to "Show", list_path(@list) %>
-  <%= link_to "Back", :back %>
+  |
+  <%= link_to "Back", "/lists/new" %>
 
-<% end %>
+  <% end %>
+</body>

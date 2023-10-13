@@ -7,6 +7,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
+      flash[:notice] = "Book was successfully created"
       redirect_to list_path(@list.id)
     else
       @lists = List.all
@@ -20,6 +21,7 @@ class ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    flash[:notice] = "Book was successfully updated"
   end
 
   def update
@@ -31,6 +33,7 @@ class ListsController < ApplicationController
   def destroy
     list = List.find(params[:id])
     list.destroy
+    flash[:notice] = "Book was successfully destroyed"
     redirect_to '/lists/new'
   end
 
